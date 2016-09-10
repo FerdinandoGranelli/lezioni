@@ -5,6 +5,9 @@
  */
 package oggetti;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
 /**
  *
  * @author ferdinando
@@ -23,9 +26,11 @@ public class Calciatore {
     private int dribling;
     private int passaggi;
     private int tiri;
+    
+    private int coefficiente = 1;
 
- //   public Calciatore() {
- //   }
+    public Calciatore() {
+    }
 
     public Calciatore(String nominativo, int eta, int altezza, int peso, int ruolo, int velocità, int fisico, int difesa, int dribling, int passaggi, int tiri) {
         this.nominativo = nominativo;
@@ -249,5 +254,32 @@ public class Calciatore {
     public void setTitolare(boolean titolare) {
         this.titolare = titolare;
     }
+    
+    public int getValoreMedio(){
+    int result = ( velocità + fisico + difesa + dribling + passaggi + tiri ) / 6;
+     result *= coefficiente ;
+       return ( result);
+    }
+    
+    public String creaSetatisiche() {
+        SecureRandom random = new SecureRandom();
+
+        RandomString nomeGenerico = new RandomString(10);
+        nominativo = nomeGenerico.nextString().toUpperCase();
+        this.dribling = random.nextInt(100);
+        this.difesa= random.nextInt(100);
+        this.passaggi= random.nextInt(100);
+        this.velocità= random.nextInt(100);
+        this.fisico= random.nextInt(100);
+        this.tiri = random.nextInt(100);
+        return nominativo;
+    };
+    
+    @Override
+    public String toString(){
+        return (" Nome " + nominativo + " Valore medio " + getValoreMedio()+ " titolare "+
+                 titolare ); 
+    }
+        
     
 }

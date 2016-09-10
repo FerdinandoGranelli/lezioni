@@ -11,6 +11,13 @@ package oggetti;
  */
 public final class Utility {
     public static String confrontaSquadre( Team inCasa, Team fuoriCasa){
-        return "";
+        String result ="";
+        if(inCasa.getValoreTeam() >= fuoriCasa.getValoreTeam()){
+            result = inCasa.getNomeTeam() + "Vince";
+        }else {
+            result =fuoriCasa.getNomeTeam() + "Vince";
+        }
+        
+        return result;
     }
 }
