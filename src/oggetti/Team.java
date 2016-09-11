@@ -91,5 +91,10 @@ public class Team {
           }
          return result;
     }
+     
+    @Override
+     public String toString(){
+       return ("");   
+     }
     
 }
